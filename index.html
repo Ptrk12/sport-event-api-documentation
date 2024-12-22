@@ -95,7 +95,7 @@
     <section id="db-doc">
         <h2>Dokumentacja Baz Danych</h2>
         <h2>Tabela: AspNetRoleClaims</h2>
-        <table>
+              <table>
             <tr>
                 <th>Kolumna</th>
                 <th>Typ danych</th>
@@ -105,6 +105,126 @@
             <tr><td>RoleId</td><td>nvarchar(450)</td><td>Identyfikator roli powiązanej z danym roszczeniem.</td></tr>
             <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia (np. nazwa atrybutu).</td></tr>
             <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
+        </table>
+ <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>nvarchar(450)</td><td>Unikalny identyfikator roli.</td></tr>
+            <tr><td>Name</td><td>nvarchar(256)</td><td>Nazwa roli.</td></tr>
+            <tr><td>NormalizedName</td><td>nvarchar(256)</td><td>Znormalizowana nazwa roli (np. bez rozróżniania wielkości liter).</td></tr>
+            <tr><td>ConcurrencyStamp</td><td>nvarchar(max)</td><td>Token używany do optymistycznej kontroli wersji.</td></tr>
+        </table>
+<table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator, automatycznie zwiększany.</td></tr>
+            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z roszczeniem.</td></tr>
+            <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia.</td></tr>
+            <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
+        </table>
+<table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>LoginProvider</td><td>nvarchar(450)</td><td>Provider logowania (np. Google, Facebook).</td></tr>
+            <tr><td>ProviderKey</td><td>nvarchar(450)</td><td>Klucz powiązany z providerem logowania.</td></tr>
+            <tr><td>ProviderDisplayName</td><td>nvarchar(max)</td><td>Wyświetlana nazwa providera (np. Google).</td></tr>
+            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z tym loginem.</td></tr>
+        </table>
+ <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z rolą.</td></tr>
+            <tr><td>RoleId</td><td>nvarchar(450)</td><td>Identyfikator roli powiązanej z użytkownikiem.</td></tr>
+        </table>
+<table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>nvarchar(450)</td><td>Unikalny identyfikator użytkownika.</td></tr>
+            <tr><td>Discriminator</td><td>nvarchar(13)</td><td>Typ użytkownika (np. Administrator, Użytkownik).</td></tr>
+            <tr><td>Money</td><td>float</td><td>Saldo użytkownika (jeśli dotyczy).</td></tr>
+            <tr><td>UserName</td><td>nvarchar(256)</td><td>Unikalna nazwa użytkownika.</td></tr>
+            <tr><td>NormalizedUserName</td><td>nvarchar(256)</td><td>Znormalizowana nazwa użytkownika (np. bez rozróżniania wielkości liter).</td></tr>
+            <tr><td>Email</td><td>nvarchar(256)</td><td>Adres e-mail użytkownika.</td></tr>
+            <tr><td>NormalizedEmail</td><td>nvarchar(256)</td><td>Znormalizowany adres e-mail użytkownika.</td></tr>
+            <tr><td>EmailConfirmed</td><td>bit</td><td>Określa, czy adres e-mail użytkownika został potwierdzony.</td></tr>
+            <tr><td>PasswordHash</td><td>nvarchar(max)</td><td>Haszowanie hasła użytkownika.</td></tr>
+            <tr><td>SecurityStamp</td><td>nvarchar(max)</td><td>Token bezpieczeństwa użytkownika.</td></tr>
+            <tr><td>ConcurrencyStamp</td><td>nvarchar(max)</td><td>Token używany do optymistycznej kontroli wersji.</td></tr>
+            <tr><td>PhoneNumber</td><td>nvarchar(max)</td><td>Numer telefonu użytkownika.</td></tr>
+            <tr><td>PhoneNumberConfirmed</td><td>bit</td><td>Określa, czy numer telefonu został potwierdzony.</td></tr>
+            <tr><td>TwoFactorEnabled</td><td>bit</td><td>Określa, czy użytkownik ma włączoną autentykację dwuskładnikową.</td></tr>
+            <tr><td>LockoutEnd</td><td>datetimeoffset(7)</td><td>Data i godzina, kiedy blokada użytkownika wygaśnie (jeśli dotyczy).</td></tr>
+            <tr><td>LockoutEnabled</td><td>bit</td><td>Określa, czy użytkownik jest zablokowany.</td></tr>
+            <tr><td>AccessFailedCount</td><td>int</td><td>Liczba nieudanych prób logowania użytkownika.</td></tr>
+        </table>
+<table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z tokenem.</td></tr>
+            <tr><td>LoginProvider</td><td>nvarchar(450)</td><td>Provider logowania.</td></tr>
+            <tr><td>Name</td><td>nvarchar(450)</td><td>Nazwa tokenu.</td></tr>
+            <tr><td>Value</td><td>nvarchar(max)</td><td>Wartość tokenu.</td></tr>
+        </table>
+<table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator przypisania.</td></tr>
+            <tr><td>EventId</td><td>int</td><td>Identyfikator wydarzenia.</td></tr>
+            <tr><td>SportEventId</td><td>int</td><td>Identyfikator wydarzenia sportowego.</td></tr>
+            <tr><td>AssignedPeople</td><td>nvarchar(max)</td><td>Lista osób przypisanych do wydarzenia.</td></tr>
+        </table>
+ <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator obiektu.</td></tr>
+            <tr><td>Name</td><td>nvarchar(max)</td><td>Nazwa obiektu.</td></tr>
+            <tr><td>Description</td><td>nvarchar(max)</td><td>Opis obiektu.</td></tr>
+            <tr><td>Adress</td><td>nvarchar(max)</td><td>Adres obiektu.</td></tr>
+            <tr><td>PricePerHour</td><td>float</td><td>Cena wynajmu za godzinę.</td></tr>
+            <tr><td>City</td><td>nvarchar(max)</td><td>Miasto, w którym znajduje się obiekt.</td></tr>
+            <tr><td>ObjectType</td><td>nvarchar(max)</td><td>Typ obiektu (np. sala, boisko).</td></tr>
+            <tr><td>CreatedBy</td><td>nvarchar(256)</td><td>Osoba tworząca obiekt.</td></tr>
+        </table>
+        <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator wydarzenia sportowego.</td></tr>
+            <tr><td>Name</td><td>nvarchar(max)</td><td>Nazwa wydarzenia sportowego.</td></tr>
+            <tr><td>CreatedBy</td><td>nvarchar(256)</td><td>Osoba tworząca wydarzenie.</td></tr>
+            <tr><td>Discipline</td><td>nvarchar(max)</td><td>Dyscyplina sportowa.</td></tr>
+            <tr><td>SkillLevel</td><td>nvarchar(max)</td><td>Poziom umiejętności wymagany do uczestnictwa.</td></tr>
+            <tr><td>ObjectId</td><td>int</td><td>Identyfikator obiektu, w którym odbywa się wydarzenie.</td></tr>
+            <tr><td>AmountOfPlayers</td><td>int</td><td>Liczba graczy w drużynie.</td></tr>
+            <tr><td>Time</td><td>int</td><td>Czas trwania wydarzenia w minutach.</td></tr>
+            <tr><td>DateWhen</td><td>datetime2(7)</td><td>Data i godzina wydarzenia.</td></tr>
+            <tr><td>IsMultiSportCard</td><td>bit</td><td>Określa, czy wydarzenie obejmuje więcej niż jedną dyscyplinę sportową.</td></tr>
         </table>
     </section>
 
