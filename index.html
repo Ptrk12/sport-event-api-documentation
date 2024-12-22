@@ -107,6 +107,7 @@
             <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
         </table>
  <table>
+     <h2>Tabela: AspNetRoles</h2>
             <tr>
                 <th>Kolumna</th>
                 <th>Typ danych</th>
@@ -117,6 +118,7 @@
             <tr><td>NormalizedName</td><td>nvarchar(256)</td><td>Znormalizowana nazwa roli (np. bez rozróżniania wielkości liter).</td></tr>
             <tr><td>ConcurrencyStamp</td><td>nvarchar(max)</td><td>Token używany do optymistycznej kontroli wersji.</td></tr>
         </table>
+        <h2>Tabela: AspNetUserClaims</h2>
 <table>
             <tr>
                 <th>Kolumna</th>
@@ -128,6 +130,7 @@
             <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia.</td></tr>
             <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
         </table>
+        <h2>Tabela: AspNetUserLogins</h2>
 <table>
             <tr>
                 <th>Kolumna</th>
@@ -139,6 +142,7 @@
             <tr><td>ProviderDisplayName</td><td>nvarchar(max)</td><td>Wyświetlana nazwa providera (np. Google).</td></tr>
             <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z tym loginem.</td></tr>
         </table>
+         <h2>Tabela: AspNetUserRoles</h2>
  <table>
             <tr>
                 <th>Kolumna</th>
@@ -148,6 +152,7 @@
             <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z rolą.</td></tr>
             <tr><td>RoleId</td><td>nvarchar(450)</td><td>Identyfikator roli powiązanej z użytkownikiem.</td></tr>
         </table>
+        <h2>Tabela: AspNetUsers</h2>
 <table>
             <tr>
                 <th>Kolumna</th>
@@ -172,6 +177,7 @@
             <tr><td>LockoutEnabled</td><td>bit</td><td>Określa, czy użytkownik jest zablokowany.</td></tr>
             <tr><td>AccessFailedCount</td><td>int</td><td>Liczba nieudanych prób logowania użytkownika.</td></tr>
         </table>
+         <h2>Tabela: AspNetUserTokens</h2>
 <table>
             <tr>
                 <th>Kolumna</th>
@@ -183,6 +189,7 @@
             <tr><td>Name</td><td>nvarchar(450)</td><td>Nazwa tokenu.</td></tr>
             <tr><td>Value</td><td>nvarchar(max)</td><td>Wartość tokenu.</td></tr>
         </table>
+        <h2>Tabela: EventAssigners</h2>
 <table>
             <tr>
                 <th>Kolumna</th>
@@ -194,6 +201,7 @@
             <tr><td>SportEventId</td><td>int</td><td>Identyfikator wydarzenia sportowego.</td></tr>
             <tr><td>AssignedPeople</td><td>nvarchar(max)</td><td>Lista osób przypisanych do wydarzenia.</td></tr>
         </table>
+         <h2>Tabela: Objects</h2>
  <table>
             <tr>
                 <th>Kolumna</th>
@@ -209,6 +217,7 @@
             <tr><td>ObjectType</td><td>nvarchar(max)</td><td>Typ obiektu (np. sala, boisko).</td></tr>
             <tr><td>CreatedBy</td><td>nvarchar(256)</td><td>Osoba tworząca obiekt.</td></tr>
         </table>
+         <h2>Tabela: SportEvents</h2>
         <table>
             <tr>
                 <th>Kolumna</th>
