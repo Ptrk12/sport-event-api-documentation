@@ -59,7 +59,7 @@
             if (selectedValue === 'swagger-doc' && !swaggerInitialized) {
                 // Inicjowanie Swagger UI tylko raz
                 SwaggerUIBundle({
-                    url: 'swagger.json',
+                    url: 'swagger.json',  // Upewnij się, że plik swagger.json jest dostępny w tej samej lokalizacji co ta strona
                     dom_id: '#swagger-ui',
                     deepLinking: true,
                     presets: [
