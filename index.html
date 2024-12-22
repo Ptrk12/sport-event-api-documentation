@@ -1,30 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>My New API</title>
-    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages - Dokumentacja</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        select {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        section {
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+    <script>
+        function toggleSection() {
+            const selectedValue = document.getElementById('menu').value;
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const activeSection = document.getElementById(selectedValue);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+        }
+    </script>
 </head>
 <body>
-    <div id="swagger-ui"></div>
-    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
-    <script>
-        window.onload = function() {
-            // Poprawiona konfiguracja Swagger UI
-            const ui = SwaggerUIBundle({
-                url: "swagger.json", // Ścieżka do pliku swagger.json
-                dom_id: '#swagger-ui', // Element DOM, w którym będzie renderowany interfejs
-                deepLinking: true,
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIBundle.SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                ]
-            }); // Zamyka obiekt konfiguracji
-            window.ui = ui;
-        };
-    </script>
+    <header>
+        <h1>GitHub Pages - Dokumentacja</h1>
+        <nav>
+            <label for="menu">Wybierz opcję:</label>
+            <select id="menu" onchange="toggleSection()">
+                <option value="">-- Wybierz --</option>
+                <option value="db-doc">Dokumentacja bazy danych</option>
+            </select>
+        </nav>
+    </header>
+
+    <section id="db-doc">
+        <h2>Dokumentacja Baz Danych</h2>
+
+        <h2>Tabela: AspNetRoleClaims</h2>
+        <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator, automatycznie zwiększany.</td></tr>
+            <tr><td>RoleId</td><td>nvarchar(450)</td><td>Identyfikator roli powiązanej z danym roszczeniem.</td></tr>
+            <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia (np. nazwa atrybutu).</td></tr>
+            <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
+        </table>
+
+        <h2>Tabela: AspNetRoles</h2>
+        <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>nvarchar(450)</td><td>Unikalny identyfikator roli.</td></tr>
+            <tr><td>Name</td><td>nvarchar(256)</td><td>Nazwa roli.</td></tr>
+            <tr><td>NormalizedName</td><td>nvarchar(256)</td><td>Znormalizowana nazwa roli (np. bez rozróżniania wielkości liter).</td></tr>
+            <tr><td>ConcurrencyStamp</td><td>nvarchar(max)</td><td>Token używany do optymistycznej kontroli wersji.</td></tr>
+        </table>
+
+        <h2>Tabela: AspNetUserClaims</h2>
+        <table>
+            <tr>
+                <th>Kolumna</th>
+                <th>Typ danych</th>
+                <th>Opis</th>
+            </tr>
+            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator, automatycznie zwiększany.</td></tr>
+            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z roszczeniem.</td></tr>
+            <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia.</td></tr>
+            <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
+        </table>
+
+        <!-- Reszta tabel została pominięta w celu skrócenia kodu -->
+
+    </section>
 </body>
 </html>
