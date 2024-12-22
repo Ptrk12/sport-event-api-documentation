@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Pages - Dokumentacja</title>
-    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@4/swagger-ui.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,9 +42,9 @@
             background-color: #f4f4f4;
         }
     </style>
-    <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@4/swagger-ui-bundle.js"></script>
     <script>
-        let swaggerInitialized = false;  // Zmienna pomocnicza, aby zapobiec wielokrotnemu inicjowaniu Swaggera
+        let swaggerInitialized = false;
 
         function toggleSection() {
             const selectedValue = document.getElementById('menu').value;
@@ -56,22 +56,26 @@
                 activeSection.classList.add('active');
             }
 
+            // Inicjuj Swagger UI tylko raz
             if (selectedValue === 'swagger-doc' && !swaggerInitialized) {
-                // Inicjowanie Swagger UI tylko raz
-                SwaggerUIBundle({
-                    url: 'swagger.json',  // Upewnij się, że plik swagger.json jest dostępny w tej samej lokalizacji co ta strona
-                    dom_id: '#swagger-ui',
-                    deepLinking: true,
-                    presets: [
-                        SwaggerUIBundle.presets.apis,
-                        SwaggerUIBundle.SwaggerUIStandalonePreset
-                    ],
-                    plugins: [
-                        SwaggerUIBundle.plugins.DownloadUrl
-                    ]
-                });
-                swaggerInitialized = true;  // Zmieniamy stan na zainicjowany
+                initSwagger();
             }
+        }
+
+        function initSwagger() {
+            const ui = SwaggerUIBundle({
+                url: 'swagger.json',  // Upewnij się, że swagger.json jest dostępny w tej samej lokalizacji co ta strona
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIBundle.SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ]
+            });
+            swaggerInitialized = true;
         }
     </script>
 </head>
@@ -100,31 +104,6 @@
             <tr><td>Id</td><td>int</td><td>Unikalny identyfikator, automatycznie zwiększany.</td></tr>
             <tr><td>RoleId</td><td>nvarchar(450)</td><td>Identyfikator roli powiązanej z danym roszczeniem.</td></tr>
             <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia (np. nazwa atrybutu).</td></tr>
-            <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
-        </table>
-        <h2>Tabela: AspNetRoles</h2>
-        <table>
-            <tr>
-                <th>Kolumna</th>
-                <th>Typ danych</th>
-                <th>Opis</th>
-            </tr>
-            <tr><td>Id</td><td>nvarchar(450)</td><td>Unikalny identyfikator roli.</td></tr>
-            <tr><td>Name</td><td>nvarchar(256)</td><td>Nazwa roli.</td></tr>
-            <tr><td>NormalizedName</td><td>nvarchar(256)</td><td>Znormalizowana nazwa roli (np. bez rozróżniania wielkości liter).</td></tr>
-            <tr><td>ConcurrencyStamp</td><td>nvarchar(max)</td><td>Token używany do optymistycznej kontroli wersji.</td></tr>
-        </table>
-
-        <h2>Tabela: AspNetUserClaims</h2>
-        <table>
-            <tr>
-                <th>Kolumna</th>
-                <th>Typ danych</th>
-                <th>Opis</th>
-            </tr>
-            <tr><td>Id</td><td>int</td><td>Unikalny identyfikator, automatycznie zwiększany.</td></tr>
-            <tr><td>UserId</td><td>nvarchar(450)</td><td>Identyfikator użytkownika powiązanego z roszczeniem.</td></tr>
-            <tr><td>ClaimType</td><td>nvarchar(max)</td><td>Typ roszczenia.</td></tr>
             <tr><td>ClaimValue</td><td>nvarchar(max)</td><td>Wartość roszczenia.</td></tr>
         </table>
     </section>
